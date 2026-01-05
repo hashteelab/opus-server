@@ -1,0 +1,23 @@
+# Inference API Server Requirements
+
+# Web Framework
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+
+# Data Validation
+pydantic>=2.0.0
+
+# HTTP Client
+requests>=2.31.0
+
+# Image Processing
+Pillow>=10.0.0
+
+# OpenAI SDK (for LLM/VLM API clients)
+openai>=1.0.0
+
+# DSPy (for product extraction pipeline)
+dspy-ai>=2.4.0
+
+# Python standard library modules used (no installation needed):
+# - base64, tempfile, os, io, typing, json, logging, re, enum
