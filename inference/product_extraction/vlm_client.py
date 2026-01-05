@@ -11,7 +11,7 @@ import json
 from PIL import Image
 import io
 from typing import Optional, Dict
-from file_extractor.image_utils import preprocess_image_for_vlm
+from .image_utils import preprocess_image_for_vlm
 from logger import log_success, log_processing, log_warning, log_info
 
 
