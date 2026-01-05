@@ -559,4 +559,4 @@ if __name__ == "__main__":
     import uvicorn
 
     logger.info("Starting Inference API server on port 8001...")
-    uvicorn.run(app, host="0.0.0.0", port=8001)
+    uvicorn.run(app, host="0.0.0.0", port=8002)
