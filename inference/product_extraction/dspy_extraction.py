@@ -89,8 +89,7 @@ class ExtractCreditNoteData(dspy.Signature):
     product_name: str = dspy.InputField()
     period: str = dspy.InputField()
     extraction_instructions: str = dspy.InputField()
-    
-    volume_reward_pairs: List[VolumeRewardPair] = dspy.OutputField()
+    volume_reward_pairs: List[VolumeRewardPair] = dspy.OutputField() 
 
 
 class INBillPeriodData(BaseModel):
@@ -690,11 +689,11 @@ def extract_credit_note_data_llm(llm_client: OpenAI, table_html: str, product: s
     log_processing(f"Using DSPy to extract CN data for {product} from [{table_id}]...", indent=4)
 
     instructions = get_dspy_credit_note_instructions(product, period)
-    
+
     try:
         # Create DSPy predictor
         extract = dspy.Predict(ExtractCreditNoteData)
-        
+
         # Execute extraction
         result = extract(
             table_html=table_html,
@@ -702,7 +701,7 @@ def extract_credit_note_data_llm(llm_client: OpenAI, table_html: str, product: s
             period=period,
             extraction_instructions=instructions
         )
-        
+
         # Convert Pydantic models to dicts
         data = []
         if hasattr(result, 'volume_reward_pairs') and result.volume_reward_pairs:
@@ -720,9 +719,9 @@ def extract_credit_note_data_llm(llm_client: OpenAI, table_html: str, product: s
                         "reward_value": pair.get("reward_value"),
                         "period": pair.get("period", period)
                     })
-        
+
         log_success(f"Extracted {len(data)} row(s) for {product}", indent=6)
-        
+
         # Log the volumes extracted for debugging
         if data:
             volumes = [row.get('volume') for row in data if row.get('volume') is not None]
@@ -1222,7 +1221,7 @@ def extract_products_hybrid(image_path: str, markdown: str) -> Dict[str, Any]:
     """
     log_empty_line()
     log_header("HYBRID VLM+LLM EXTRACTION PIPELINE", char="=")
-    
+
     try:
         # Initialize clients
         vlm_client = VLMClient()

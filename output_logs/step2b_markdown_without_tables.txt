@@ -1,7 +1,0 @@
-=== STEP2B_MARKDOWN_WITHOUT_TABLES ===
-Timestamp: 2026-01-05T18:56:53.843177
-================================================================================
-
-{
-  "cleaned_text": "## Pre-Lux Season Offer\r\n\r\nScheme Duration: 1st Sep to 28th Sep\r\n\r\nChannel: Channel 10\r\n\r\n### Qualifying Targets and Eligibility Criteria:\r\n\r\n\r\n\r\n\r\n\r\n**Qualification Criteria:** Lift 200 Ltrs of Pre lux Emulsions by 12th Sep to be eligible for the season scheme.\r\n\r\n\r\n\r\n**Super Bonus:** Complete 55% Pre Lux target by 19th Sep and get Rs 4 on Premium Emulsion for the entire month.\r\n\r\nNote- PIs refer additional scheme on lux Emulsion \"The Luxury Champions Club\" 1st AUG'25 to 28th Oct'25 (Already rolled-out)."
-}

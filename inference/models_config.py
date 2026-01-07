@@ -99,7 +99,7 @@ class Qwen3VLConfig:
     """Configuration for Qwen3-VL model (Vision Language Model)"""
 
     # VLM Server Configuration
-    URL = "https://spwkxt5z9vsux7-8000.proxy.runpod.net/v1/chat/completions"
+    URL = "https://t3x3rzhu6v84v6-8000.proxy.runpod.net/v1/chat/completions"
     MODEL = "Qwen/Qwen3-VL-30B-A3B-Instruct-FP8"
 
     # VLM Parameters
@@ -174,8 +174,8 @@ class LLMConfig:
             "model": "aws_hosted"
         },
         LLMProviderEnum.runpod: {
-            "url": "https://xi7i58zuq0qv4k-8000.proxy.runpod.net/v1",
-            "model": "Qwen/Qwen2.5-32B-Instruct-AWQ"
+            "url": "https://d4qbws5y8s7ha1-8000.proxy.runpod.net/v1",
+            "model": "Qwen/Qwen2.5-32B-Instruct"
         }
     }
     
@@ -239,7 +239,8 @@ def create_dspy_lm(
         api_key="dummy",  # OpenAI-compatible servers often don't require real API key
         max_tokens=max_tokens,
         temperature=temperature,
-        seed=seed
+        seed=seed,
+        cache=False,  # Disable caching
     )
     
     return lm

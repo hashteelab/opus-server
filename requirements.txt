@@ -17,7 +17,7 @@ Pillow>=10.0.0
 openai>=1.0.0
 
 # DSPy (for product extraction pipeline)
-dspy-ai>=2.4.0
+dspy-ai>=2.5.32
 
 # Python standard library modules used (no installation needed):
 # - base64, tempfile, os, io, typing, json, logging, re, enum

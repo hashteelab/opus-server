@@ -27,7 +27,7 @@ You are working with scheme docuements of paint industry in India.
 
 For EACH scheme, extract:
 1. scheme_name: Official name/title of the scheme
-2. timeline: Overall scheme duration/validity period
+2. timeline: Overall scheme duration/validity period in "DD/MM to DD/MM" format (e.g., "01/08 to 31/10"). No year. For "By DDth Month" format, use "01/MM to DD/MM" (e.g., "By 19th Sept" → "01/09 to 19/09").
 3. products: Array of ALL UNIQUE products covered by this scheme. As you are working with paints indeustry products, iphone, fridge, luggage etc are NOT products.
 
 Product extraction guidelines:
@@ -79,7 +79,7 @@ For EACH of the {table_count} TABLES, extract:
 1. table_id: A short descriptive identifier based on the table's content
 2. section_type: Always "table"
 3. marker: A UNIQUE text combination that appears ONLY in this specific table
-4. period: Time period associated with the table (if visible)
+4. period: Time period in "DD/MM to DD/MM" format (e.g., "01/08 to 31/10"). No year. For "By DDth Month" format, use "01/MM to DD/MM". If not visible, use empty string.
 5. products_in_section: Which products from the known product list appear in this table
 
 CRITICAL - You must identify exactly {table_count} tables to match the OCR output.
@@ -120,6 +120,7 @@ Task:
 - Only extract data for products actually present in the table (return empty array for missing products)
 - Extract numeric values only (strip currency symbols, units, and other text)
 - Do not extract volume or quantity numbers—only per-unit pricing/rebate amounts
+- CRITICAL: Format all periods in "DD/MM to DD/MM" format (e.g., "01/08 to 31/10"). No year. For "By DDth Month" format, use "01/MM to DD/MM".
 """
 
 
@@ -146,8 +147,8 @@ Data extraction rules:
 1. Each entry must have both volume (threshold) and reward_value (amount)
 2. Return numeric values only (strip currency symbols, units like "ltr", separators). Return only when explicit numeric values are present. Ignore slabs where either volume or reward_value is missing or non-numeric.
 3. It may happen that there is a numeric reward value but it is not sufficient to give value for that slab. For eg. "tv+20k voucher" - here 20k is numeric but not sufficient to give value for that slab. So ignore such slabs.
-3. Handle combined product names flexibly (e.g., "DSI+DSE" matches "DSI")
-4. Be precise about the period - it must be accurate. Period presision is very important.
+4. Handle combined product names flexibly (e.g., "DSI+DSE" matches "DSI")
+5. Be precise about the period - it must be accurate. Period presision is very important. Format: "DD/MM to DD/MM" (e.g., "01/08 to 31/10"). No year. For "By DDth Month" format, use "01/MM to DD/MM".
 
 VERY IMPORTANT:
 DO NOT make up data. Only extract what is explicitly present in the table. SKIP any entires where value of reward or volume is not clearly present, such as: "3gm Gold", "tv+20k voucher", "gift item", "special discount", etc.
@@ -183,14 +184,14 @@ For each entry, extract:
 1. target: Target volume/sale amount/percentage (if mentioned)
 2. reward_text: Full reward description
 3. reward_value: Numeric value (if explicitly mentioned)
-4. period: Time period (if mentioned, otherwise use scheme timeline).
+4. period: Time period in "DD/MM to DD/MM" format (e.g., "01/08 to 31/10"). No year. For "By DDth Month" format, use "01/MM to DD/MM". If not mentioned, use scheme timeline.
 5. SKIP entries without clear numeric reward values
 
 CRITICAL: The period must be accurate. Don't miss any rewards.
 
 Return ONLY valid JSON array:
 [
-  {{"target": "55%", "reward_text": "Rs 4 per liter bonus on Luxury Emulsions", "reward_value": 4, "period": "By 19th Sept"}},
+  {{"target": "55%", "reward_text": "Rs 4 per liter bonus on Luxury Emulsions", "reward_value": 4, "period": "01/09 to 19/09"}},
 ]
 
 Return empty array [] if no reward entries found that explicitly mention this product.
