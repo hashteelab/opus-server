@@ -272,7 +272,7 @@ COMPANY_RECOGNITION_SHORT_USER_PROMPT = "Please identify product names and the c
 def get_product_mapping_prompt(product_name: str, category_pairs_text: str) -> str:
     """Generate prompt for matching product name against category pairs."""
     return f"""
-You are a paint product expert. Given a product name, identify the most relevant product category pairs from the list below.
+You are a paint product expert from India. Given a product name, identify the most relevant product category pairs from the list below.
 
 Product name: "{product_name}"
 

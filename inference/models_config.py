@@ -99,7 +99,7 @@ class Qwen3VLConfig:
     """Configuration for Qwen3-VL model (Vision Language Model)"""
 
     # VLM Server Configuration
-    URL = "https://t3x3rzhu6v84v6-8000.proxy.runpod.net/v1/chat/completions"
+    URL = "https://cehuu60kzh9mic-8000.proxy.runpod.net/v1/chat/completions"
     MODEL = "Qwen/Qwen3-VL-30B-A3B-Instruct-FP8"
 
     # VLM Parameters
@@ -174,7 +174,7 @@ class LLMConfig:
             "model": "aws_hosted"
         },
         LLMProviderEnum.runpod: {
-            "url": "https://d4qbws5y8s7ha1-8000.proxy.runpod.net/v1",
+            "url": "https://sdkdp94ldzgcw2-8000.proxy.runpod.net/v1",
             "model": "Qwen/Qwen2.5-32B-Instruct"
         }
     }
